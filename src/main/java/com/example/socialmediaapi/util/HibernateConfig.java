@@ -33,7 +33,6 @@ public class HibernateConfig {
         dataSource.setUrl("jdbc:postgresql://localhost/Social Media API");
         dataSource.setUsername("user");
         dataSource.setPassword("1234");
-
         return dataSource;
     }
 
