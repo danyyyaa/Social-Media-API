@@ -8,4 +8,10 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, Long> {
+
+    UserDto findByEmail(String email);
+
+    UserDto findByUsername(String user);
+
+    boolean existsByEmail(String email);
 }

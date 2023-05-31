@@ -7,6 +7,7 @@ import com.example.socialmediaapi.mapper.UserMapper;
 import com.example.socialmediaapi.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Primary;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,5 +40,18 @@ public class UserServiceImpl implements UserService {
                 .stream()
                 .map(UserMapper::mapToUserDto)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public void registerUser(User user) {
+        String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+        user.setPassword(hashedPassword);
+
+        userRepository.save(user);
+    }
+
+    @Override
+    public boolean isUserEmailExists(String email) {
+        return userRepository.existsByEmail(email);
     }
 }

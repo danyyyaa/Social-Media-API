@@ -31,5 +31,4 @@ public class ErrorHandler {
     public ErrorResponse handleValidationException(final ConstraintViolationException e) {
         return new ErrorResponse(e.getMessage());
     }
-
 }

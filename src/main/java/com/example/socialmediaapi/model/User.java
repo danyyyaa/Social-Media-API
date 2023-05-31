@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import java.util.Set;
 
 @Entity
 @Data
@@ -22,11 +23,11 @@ public class User {
     @Column(name="id")
     private Long id;
 
-    @Column(name="user_name")
+    @Column(name="user_name", unique = true)
     @NotBlank
     private String username;
 
-    @Column(name="email")
+    @Column(name="email", unique = true)
     @Email
     @NotBlank
     private String email;
@@ -34,4 +35,9 @@ public class User {
     @Column(name="password")
     @NotBlank
     private String password;
+
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name="user_id"))
+    @Enumerated(EnumType.STRING)
+    private Set<Role> roles;
 }
