@@ -1,12 +1,19 @@
 package com.example.socialmediaapi.service;
 
+import com.example.socialmediaapi.dto.UserDto;
+import com.example.socialmediaapi.exception.UserNotFoundException;
 import com.example.socialmediaapi.model.User;
+import com.example.socialmediaapi.mapper.UserMapper;
 import com.example.socialmediaapi.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static com.example.socialmediaapi.mapper.UserMapper.mapToUser;
+import static com.example.socialmediaapi.mapper.UserMapper.mapToUserDto;
 
 @Service
 @RequiredArgsConstructor
@@ -16,17 +23,21 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
 
     @Override
-    public User createUser(User user) {
-        return userRepository.createUser(user).get();
+    public UserDto createUser(UserDto userDto) {
+        return mapToUserDto(userRepository.save(mapToUser(userDto)));
     }
 
     @Override
-    public User getUserById(Long id) {
-        return userRepository.getUserById(id).get();
+    public UserDto getUserById(Long id) {
+        User user = userRepository.findById(id).orElseThrow(UserNotFoundException::new);
+        return mapToUserDto(user);
     }
 
     @Override
-    public List<User> getAllUsers() {
-        return userRepository.getAllUsers().get();
+    public List<UserDto> getAllUsers() {
+        return userRepository.findAll()
+                .stream()
+                .map(UserMapper::mapToUserDto)
+                .collect(Collectors.toList());
     }
 }

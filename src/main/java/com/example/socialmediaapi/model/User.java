@@ -23,7 +23,8 @@ public class User {
     private Long id;
 
     @Column(name="user_name")
-    private String userName;
+    @NotBlank
+    private String username;
 
     @Column(name="email")
     @Email

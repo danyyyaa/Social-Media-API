@@ -1,14 +1,14 @@
 package com.example.socialmediaapi.service;
 
-import com.example.socialmediaapi.model.User;
+import com.example.socialmediaapi.dto.UserDto;
 
 import java.util.List;
 
 public interface UserService {
 
-    User createUser(User user);
+    UserDto createUser(UserDto userDto);
 
-    User getUserById(Long id) ;
+    UserDto getUserById(Long id) ;
 
-    List<User> getAllUsers();
+    List<UserDto> getAllUsers();
 }

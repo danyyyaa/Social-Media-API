@@ -1,5 +1,6 @@
 package com.example.socialmediaapi.controller;
 
+import com.example.socialmediaapi.dto.UserDto;
 import com.example.socialmediaapi.model.User;
 import com.example.socialmediaapi.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -16,17 +17,17 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping
-    public User createUser(@RequestBody @Valid User user) {
-        return userService.createUser(user);
+    public UserDto createUser(@RequestBody @Valid UserDto userDto) {
+        return userService.createUser(userDto);
     }
 
     @GetMapping("/{id}")
-    public User getUserById(@PathVariable Long id) {
+    public UserDto getUserById(@PathVariable Long id) {
         return userService.getUserById(id);
     }
 
     @GetMapping
-    public Collection<User> getAllUsers() {
+    public Collection<UserDto> getAllUsers() {
         return userService.getAllUsers();
     }
 }
