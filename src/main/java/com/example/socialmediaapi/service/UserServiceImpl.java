@@ -7,7 +7,7 @@ import com.example.socialmediaapi.mapper.UserMapper;
 import com.example.socialmediaapi.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Primary;
-import org.springframework.security.crypto.bcrypt.BCrypt;
+//import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,7 +25,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto createUser(UserDto userDto) {
-        return mapToUserDto(userRepository.save(mapToUser(userDto)));
+        User user = userRepository.save(mapToUser(userDto));
+        return mapToUserDto(user);
     }
 
     @Override
@@ -43,11 +44,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void registerUser(User user) {
-        String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
-        user.setPassword(hashedPassword);
+    public UserDto registerUser(User user) {
+        //String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+        //user.setPassword(hashedPassword);
 
-        userRepository.save(user);
+        //return userRepository.save(user);
+        return this.createUser(mapToUserDto(user));
     }
 
     @Override

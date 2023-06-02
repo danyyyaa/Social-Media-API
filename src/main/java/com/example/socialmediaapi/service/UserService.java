@@ -13,7 +13,7 @@ public interface UserService {
 
     List<UserDto> getAllUsers();
 
-    void registerUser(User user);
+    UserDto registerUser(User user);
 
     boolean isUserEmailExists(String email);
 }

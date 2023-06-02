@@ -14,11 +14,11 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
-    @Override
+    /*@Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/register").setViewName("register");
-    }
+    }*/
 
     @Bean
     public ViewResolver thymeleafViewResolver() {

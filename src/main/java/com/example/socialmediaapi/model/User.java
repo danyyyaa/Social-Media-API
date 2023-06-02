@@ -23,11 +23,11 @@ public class User {
     @Column(name="id")
     private Long id;
 
-    @Column(name="user_name", unique = true)
+    @Column(name="user_name")
     @NotBlank
     private String username;
 
-    @Column(name="email", unique = true)
+    @Column(name="email")
     @Email
     @NotBlank
     private String email;
@@ -36,8 +36,8 @@ public class User {
     @NotBlank
     private String password;
 
-    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+    /*@ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name="user_id"))
     @Enumerated(EnumType.STRING)
-    private Set<Role> roles;
+    private Set<Role> roles;*/
 }
