@@ -2,7 +2,7 @@
 
 
 
-Технологии: Java + Spring Boot + Maven + JUnit + RESTful API + PostgreSQL + Spring Security + Hibernate + OpenAPI + Lombok
+Технологии: Java + Spring Boot + Spring Security + Spring MVC + Maven + JUnit + PostgreSQ + Hibernate + OpenAPI
 
 
 
