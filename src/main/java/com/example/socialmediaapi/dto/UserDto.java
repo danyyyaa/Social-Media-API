@@ -1,10 +1,7 @@
 package com.example.socialmediaapi.dto;
 
 import com.example.socialmediaapi.model.Role;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Collection;
 
@@ -22,5 +19,6 @@ public class UserDto {
 
     private String password;
 
+    @Singular
     private Collection<Role> roles;
 }

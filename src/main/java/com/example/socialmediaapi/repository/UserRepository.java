@@ -1,15 +1,14 @@
 package com.example.socialmediaapi.repository;
 
-import com.example.socialmediaapi.dto.UserDto;
 import com.example.socialmediaapi.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    UserDto findByEmail(String email);
+    User findByEmail(String email);
 
-    UserDto findByUsername(String user);
+    User findByUsername(String username);
 
     boolean existsByEmail(String email);
 }
