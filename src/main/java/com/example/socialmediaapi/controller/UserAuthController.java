@@ -23,7 +23,7 @@ public class UserAuthController {
 
     @PostMapping("/register")
     public String register(@ModelAttribute("user") UserDto user) {
-        userService.createUser(user);
+        userService.registerUser(user);
         return "redirect:/users/auth/successfulRegister";
     }
 
@@ -45,5 +45,10 @@ public class UserAuthController {
     @GetMapping("/successfulSignIn")
     public String successfulSignIn() {
         return "successfulSignIn";
+    }
+
+    @GetMapping("/authenticated")
+    public String pageForAuthenticated(@ModelAttribute("user") UserDto user) {
+        return "read for profile page";
     }
 }

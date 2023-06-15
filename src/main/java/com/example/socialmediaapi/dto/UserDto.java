@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Set;
+import java.util.Collection;
 
 @Data
 @Builder
@@ -22,5 +22,5 @@ public class UserDto {
 
     private String password;
 
-    //private Set<Role> roles;
+    private Collection<Role> roles;
 }

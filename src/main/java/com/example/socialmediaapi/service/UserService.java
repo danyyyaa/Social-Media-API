@@ -1,7 +1,6 @@
 package com.example.socialmediaapi.service;
 
 import com.example.socialmediaapi.dto.UserDto;
-import com.example.socialmediaapi.model.User;
 
 import java.util.List;
 
@@ -13,7 +12,9 @@ public interface UserService {
 
     List<UserDto> getAllUsers();
 
-    UserDto registerUser(User user);
+    UserDto registerUser(UserDto user);
 
     boolean isUserEmailExists(String email);
+
+    UserDto findByUsername(String username);
 }

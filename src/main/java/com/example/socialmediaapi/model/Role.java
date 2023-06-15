@@ -1,9 +1,17 @@
 package com.example.socialmediaapi.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 
+@Entity
+@Data
+@Table(name = "roles")
+public class Role {
 
-public enum Role {
-    USER;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String name;
 }
