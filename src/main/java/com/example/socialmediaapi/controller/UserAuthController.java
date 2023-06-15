@@ -49,6 +49,6 @@ public class UserAuthController {
 
     @GetMapping("/authenticated")
     public String pageForAuthenticated(@ModelAttribute("user") UserDto user) {
-        return "read for profile page";
+        return "pageForAuthenticatedUsers";
     }
 }
